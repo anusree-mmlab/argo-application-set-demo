@@ -1,27 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ template "helm-guestbook.fullname" . }}
+  name: guest-sample
   labels:
-    app: {{ template "helm-guestbook.name" . }}
+    app: guest-sample
     chart: {{ template "helm-guestbook.chart" . }}
-    release: {{ .Release.Name }}
+    release: helm-guestbook
     heritage: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.replicaCount }}
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: {{ template "helm-guestbook.name" . }}
-      release: {{ .Release.Name }}
+      app: guest-sample
+      release: helm-guestbook
   template:
     metadata:
       labels:
-        app: {{ template "helm-guestbook.name" . }}
-        release: {{ .Release.Name }}
+        app: guest-sample
+        release: helm-guestbook
     spec:
       containers:
-        - name: {{ .Chart.Name }}
+        - name: helm-guestbook
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
