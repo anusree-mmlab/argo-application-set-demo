@@ -8,7 +8,7 @@ spec:
       git: 
         directories: 
           - 
-            path: Guestbook_helm/*
+            path: guestbook_helm/*
         repoURL: "https://github.com/anusree-mmlab/argo-application-set-demo.git"
         revision: HEAD
   template: 
