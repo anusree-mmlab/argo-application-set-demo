@@ -1,19 +1,18 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ template "helm-guestbook.fullname" . }}
+  name: guest-sample
   labels:
-    app: {{ template "helm-guestbook.name" . }}
-    chart: {{ template "helm-guestbook.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
+    app: guest-sample
+    chart: helm-guestbook
+    release: helm-guestbook
 spec:
-  type: {{ .Values.service.type }}
+  type: ClusterIP
   ports:
-    - port: {{ .Values.service.port }}
+    - port: 8086
       targetPort: http
       protocol: TCP
       name: http
   selector:
-    app: {{ template "helm-guestbook.name" . }}
-    release: {{ .Release.Name }}
+    app: guest-sample
+    release: helm-guestbook
