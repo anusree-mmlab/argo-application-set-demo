@@ -27,17 +27,3 @@ spec:
             - name: http
               containerPort: 8086
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 8086
-              host: 0.0.0.0
-            initialDelaySeconds: 30
-            timeoutSeconds: 10
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 8086
-              host: 0.0.0.0
-            initialDelaySeconds: 30
-            timeoutSeconds: 10
