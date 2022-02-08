@@ -1,29 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: guest-sample
-  labels:
-    app: guest-sample
-    chart:  helm-guestbook
-    release: helm-guestbook
+  name: guestbook-ui
 spec:
   replicas: 1
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: guest-sample
-      release: helm-guestbook
+      app: guestbook-ui
   template:
     metadata:
       labels:
-        app: guest-sample
-        release: helm-guestbook
+        app: guestbook-ui
     spec:
       containers:
-        - name: helm-guestbook
-          image: "gcr.io/heptio-images/ks-guestbook-demo:0.1"
-          imagePullPolicy: IfNotPresent
-          ports:
-            - name: http
-              containerPort: 8086
-              protocol: TCP
+      - image: gcr.io/heptio-images/ks-guestbook-demo:0.1
+        name: guestbook-ui
+        ports:
+        - containerPort: 80
