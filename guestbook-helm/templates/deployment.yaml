@@ -4,9 +4,8 @@ metadata:
   name: guest-sample
   labels:
     app: guest-sample
-    chart: {{ template "helm-guestbook.chart" . }}
+    chart:  helm-guestbook
     release: helm-guestbook
-    heritage: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.replicaCount }}
   revisionHistoryLimit: 3
